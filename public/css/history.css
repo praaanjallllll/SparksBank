@@ -1,0 +1,52 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+h1{
+  padding: 0 10px;
+}
+body {
+    font-family: "Montserrat";
+    text-align: center;
+    padding: 0 80px;
+}
+
+.big-heading {
+  padding-top: 13px;
+    font-family: "Montserrat", black 900;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color:rgb(34, 34, 25);
+    line-height: 1.5;
+    padding-bottom: 10px;
+}
+.container-history{
+  padding: 20px 120px;
+  margin: 20px auto;
+}
+.table{
+  border-collapse: collapse;
+  font-size: 1.1em;
+  border-radius: 5px 5px 0  0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+.table thead tr{
+  background-color: #009879;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+}
+.table th, .table td{
+  padding: 12px 17px;
+
+}
+.table tbody tr{
+  border-bottom: 1px solid #dddddd;
+}
+.table tbody tr:nth-of-type(even){
+          background-color: #f3f3f3;
+}
+.table tbody tr:last-of-type{
+  border-bottom: 2px solid #009879;
+}

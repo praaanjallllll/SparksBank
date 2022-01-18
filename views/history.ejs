@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparks Bank</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+    <h1 class="big-heading">History</h1>
+    <div id="btn-trans">
+      <a href="/transaction">
+        <button class="btn-1 btn-light btn-lg">Make A Transaction</button>
+      </a>
+    </div>
+
+
+    <div class="container-history">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Sender</th>
+            <th scope="col">Reciever</th>
+            <th scope="col">Transaction Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(var i=0;i<list.length;i++){%>
+          <tr>
+            <th scope="row"><%= list[i].Id%></th>
+            <td><%= list[i].Sender_Name%></td>
+            <td><%= list[i].Reciever_Name%></td>
+            <td><%= list[i].Amount%></td>
+          </tr>
+          <%}%>  
+        </tbody>
+      </table>
+    </div>
+
+</body>
+</html>

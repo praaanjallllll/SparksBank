@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparks Bank</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/transaction.css">
+</head>
+<body>
+    <h1 class="big-heading">Transaction</h1>
+    <form action="/transaction" method="POST">
+    <div class="row transaction-details">
+      <div class="col-lg-6">
+        <div class="form-group">
+          <label class="heading" for="account-holder1">Sender's Name</label>
+          <select class="form-control" id="account-holder1" name="SenderName">
+            <option>Select name</option>
+            <%for(var i=0; i<list.length;i++){ %>
+                <option><%= list[i].User_name%></option>
+            <%}%>
+                  
+          </select>
+        </div>
+    
+      
+        <div class="form-group">
+          <label class="heading" for="exampleInputEmail1">Account Number</label>
+          <input type="text" class="form-control" maxlength="3" id="accountNumber1" name="SenderAccount" data-bind="value:replyNumber" placeholder="Enter account number">
+        </div>
+          
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="checkbox">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <p id="p1"></p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-group">
+            <label class="heading" for="account-holder2">Recipient's Name</label>
+            <select class="form-control" id="account-holder2" name="ReceiverName">
+              <option>Select name</option>
+              <%for(var i=0; i<list.length;i++){ %>
+                <option><%= list[i].User_name%></option>
+              <%}%>
+              
+            </select>
+        </div>
+        <div class="form-group">
+          <label class="heading" for="exampleInputEmail1">Account Number</label>
+          <input type="text" class="form-control" id="accountNumber2" name="ReceiverAccount" data-bind="value:replyNumber" maxlength="3" placeholder="Enter account number">
+        </div>
+          
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" name="checkbox">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          <p id="p2"></p>
+        </div>
+      </div>
+    </div>
+      <div class="form-group row amount">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Amount</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" id="inputPassword" name="MoneyTransfer" placeholder="Transfer Amount">
+        </div>
+      </div>
+      <div id="btn-transfer">
+          <button type="submit" class="btn btn-dark btn-lg" id="myBtn" >Transfer Money</button>
+      </div>
+
+    </form>
+    <div id="btn-hist">
+    <a  href="/history">
+      <button class="btn-1 btn-light btn-lg">Show History</button>
+    </a>
+  </div>
+  
+
+  <!-- <button type="button" id = "myBTn" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+  </button>
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> --> -->
+
+  <script>
+    document.querySelectorAll('input[name="checkbox"]')[0].addEventListener("change", async () => {
+        var accountNumber = document.getElementById("accountNumber1").value;
+        var accountHolder = document.getElementById("account-holder1").value;
+        const response = await fetch('http://localhost:3000/transaction/' + accountNumber+ "/"+accountHolder);
+        const myJson = await response.json();
+        if(myJson.isThere == true){
+          document.getElementById("p1").innerHTML = "Account Number Verified";
+          document.getElementById("p1").style.color = "green";
+        }else{
+          document.getElementById("p1").innerHTML = "Invalid Account Number";
+          document.getElementById("p1").style.color = "red";
+        }
+    });
+    document.querySelectorAll('input[name="checkbox"]')[1].addEventListener("change", async () => {
+        var accountNumber = document.getElementById("accountNumber2").value;
+        var accountHolder = document.getElementById("account-holder2").value;
+        const response = await fetch('http://localhost:3000/transaction/' + accountNumber +"/"+accountHolder);
+        const myJson = await response.json();
+      if(myJson.isThere == true){
+        document.getElementById("p2").innerHTML = "Account Number Verified";
+        document.getElementById("p2").style.color = "green";
+      }else{
+        document.getElementById("p2").innerHTML = "Invalid Account Number";
+        document.getElementById("p2").style.color = "red";
+      }
+    }); 
+    // document.getElementById("myBTn").addEventListener("click",onClickTransfer);
+    // function onClickTransfer(){
+    //   document.getElementById("myModal").on('shown.bs.modal', function () {
+    //     $('#myInput').trigger('focus')
+    //   });
+    // }
+    
+  </script>
+  
+</body>
+
+</html>
+
+
+
+ 

@@ -1,0 +1,44 @@
+
+h1{
+  padding: 30px 10px;
+}
+body {
+    font-family: "Montserrat";
+    padding: 0 80px;
+    background: linear-gradient(135deg, #71b7e6,#9b59b6);
+}
+p{
+  font-size: 0.8rem;
+}
+.big-heading {
+    font-family: "Montserrat", Black 900;
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.transaction-details{
+  padding: 20px 160px;
+}
+#btn-transfer{
+  margin-top: 20px;
+  text-align: center;
+}
+.heading{
+  font-size: 1.3rem;
+}
+.transfer{
+  padding: 0 430px;
+}
+.amount{
+  padding: 0 430px;
+  margin-left: -70px;
+}
+#btn-hist{
+  margin-top: 20px;
+  text-align: center;
+}
+.btn-1{
+  padding:5px;
+}
